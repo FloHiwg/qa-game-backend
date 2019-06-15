@@ -12,24 +12,24 @@ public class TicketComment {
     @Id
     private String id;
     @DBRef
-    private User createdBy;
+    private ApplicationUser createdBy;
     private Date created;
     private String content;
 
     public TicketComment() {
     }
 
-    public TicketComment(User createdBy, Date created, String content) {
+    public TicketComment(ApplicationUser createdBy, Date created, String content) {
         this.createdBy = createdBy;
         this.created = created;
         this.content = content;
     }
 
-    public User getCreatedBy() {
+    public ApplicationUser getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(ApplicationUser createdBy) {
         this.createdBy = createdBy;
     }
 

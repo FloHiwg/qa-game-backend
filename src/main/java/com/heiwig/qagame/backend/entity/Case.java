@@ -18,15 +18,15 @@ public class Case {
     private String description;
     private Date created;
     @DBRef
-    private User createdBy;
+    private ApplicationUser createdBy;
     private Date updated;
     @DBRef
-    private User updatedBy;
+    private ApplicationUser updatedBy;
 
     public Case() {
     }
 
-    public Case(List<Step> stepList, String description, Date created, User createdBy, Date updated, User updatedBy) {
+    public Case(List<Step> stepList, String description, Date created, ApplicationUser createdBy, Date updated, ApplicationUser updatedBy) {
         this.stepList = stepList;
         this.description = description;
         this.created = created;
@@ -67,11 +67,11 @@ public class Case {
         this.created = created;
     }
 
-    public User getCreatedBy() {
+    public ApplicationUser getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(ApplicationUser createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -83,11 +83,11 @@ public class Case {
         this.updated = updated;
     }
 
-    public User getUpdatedBy() {
+    public ApplicationUser getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(User updatedBy) {
+    public void setUpdatedBy(ApplicationUser updatedBy) {
         this.updatedBy = updatedBy;
     }
 }

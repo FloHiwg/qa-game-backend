@@ -17,15 +17,15 @@ public class Run {
     private List<Scenario> scenarioList;
     private Date runDate;
     private String description;
-    private User createdBy;
+    private ApplicationUser createdBy;
     private Date created;
-    private User updatedBy;
+    private ApplicationUser updatedBy;
     private Date updated;
 
     public Run() {
     }
 
-    public Run(Date runDate, String description, User createdBy, Date created, User updatedBy, Date updated) {
+    public Run(Date runDate, String description, ApplicationUser createdBy, Date created, ApplicationUser updatedBy, Date updated) {
         this.runDate = runDate;
         this.description = description;
         this.createdBy = createdBy;
@@ -66,11 +66,11 @@ public class Run {
         this.description = description;
     }
 
-    public User getCreatedBy() {
+    public ApplicationUser getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(ApplicationUser createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -82,11 +82,11 @@ public class Run {
         this.created = created;
     }
 
-    public User getUpdatedBy() {
+    public ApplicationUser getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(User updatedBy) {
+    public void setUpdatedBy(ApplicationUser updatedBy) {
         this.updatedBy = updatedBy;
     }
 

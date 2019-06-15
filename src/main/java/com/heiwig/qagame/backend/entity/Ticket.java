@@ -19,14 +19,14 @@ public class Ticket {
     @DBRef
     private Step refStep;
     @DBRef
-    private User createdBy;
+    private ApplicationUser createdBy;
     private Date created;
     private List<TicketComment> commentList;
 
     public Ticket() {
     }
 
-    public Ticket(String name, TicketType type, String description, Step refStep, User createdBy, Date created) {
+    public Ticket(String name, TicketType type, String description, Step refStep, ApplicationUser createdBy, Date created) {
         this.name = name;
         this.type = type;
         this.description = description;
@@ -75,11 +75,11 @@ public class Ticket {
         this.refStep = refStep;
     }
 
-    public User getCreatedBy() {
+    public ApplicationUser getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(ApplicationUser createdBy) {
         this.createdBy = createdBy;
     }
 

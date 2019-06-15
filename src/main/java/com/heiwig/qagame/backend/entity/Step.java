@@ -14,15 +14,15 @@ public class Step {
     private String expectedResult;
     private Date created;
     @DBRef
-    private User createdBy;
+    private ApplicationUser createdBy;
     private Date updated;
     @DBRef
-    private User updatedBy;
+    private ApplicationUser updatedBy;
 
     public Step() {
     }
 
-    public Step(String description, String expectedResult, Date created, User createdBy, Date updated, User updatedBy) {
+    public Step(String description, String expectedResult, Date created, ApplicationUser createdBy, Date updated, ApplicationUser updatedBy) {
         this.description = description;
         this.expectedResult = expectedResult;
         this.created = created;
@@ -63,11 +63,11 @@ public class Step {
         this.created = created;
     }
 
-    public User getCreatedBy() {
+    public ApplicationUser getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(ApplicationUser createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -79,11 +79,11 @@ public class Step {
         this.updated = updated;
     }
 
-    public User getUpdatedBy() {
+    public ApplicationUser getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(User updatedBy) {
+    public void setUpdatedBy(ApplicationUser updatedBy) {
         this.updatedBy = updatedBy;
     }
 }
