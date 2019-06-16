@@ -27,12 +27,8 @@ public class Scenario {
     public Scenario() {
     }
 
-    public Scenario(String description, Date created, ApplicationUser createdBy, Date updated, ApplicationUser updatedBy, Priority priority) {
+    public Scenario(String description, Priority priority) {
         this.description = description;
-        this.created = created;
-        this.createdBy = createdBy;
-        this.updated = updated;
-        this.updatedBy = updatedBy;
         this.priority = priority;
     }
 

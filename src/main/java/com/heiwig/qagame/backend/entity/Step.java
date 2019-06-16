@@ -22,13 +22,9 @@ public class Step {
     public Step() {
     }
 
-    public Step(String description, String expectedResult, Date created, ApplicationUser createdBy, Date updated, ApplicationUser updatedBy) {
+    public Step(String description, String expectedResult) {
         this.description = description;
         this.expectedResult = expectedResult;
-        this.created = created;
-        this.createdBy = createdBy;
-        this.updated = updated;
-        this.updatedBy = updatedBy;
     }
 
     public String getId() {

@@ -26,13 +26,8 @@ public class Case {
     public Case() {
     }
 
-    public Case(List<Step> stepList, String description, Date created, ApplicationUser createdBy, Date updated, ApplicationUser updatedBy) {
-        this.stepList = stepList;
+    public Case(String description) {
         this.description = description;
-        this.created = created;
-        this.createdBy = createdBy;
-        this.updated = updated;
-        this.updatedBy = updatedBy;
     }
 
     public String getId() {
