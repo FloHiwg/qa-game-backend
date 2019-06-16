@@ -2,9 +2,11 @@ package com.heiwig.qagame.backend.repository;
 
 import com.heiwig.qagame.backend.entity.ApplicationUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@Repository
+import java.util.Optional;
+
+@RepositoryRestResource(path = "users")
 public interface ApplicationUserRepository extends MongoRepository<ApplicationUser, String> {
-    ApplicationUser findByUsername(String username);
+    Optional<ApplicationUser> findByUsername(String username);
 }

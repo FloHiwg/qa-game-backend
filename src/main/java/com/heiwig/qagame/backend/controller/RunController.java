@@ -35,35 +35,12 @@ public class RunController {
     @Autowired
     private RunRepository runRepository;
 
-    @GetMapping("/runs")
-    public List<Run> retrieveAllRuns() {
-        return runRepository.findAll();
-    }
-
-    @GetMapping("/runs/{id}")
-    public Optional<Run> retrieveRunById(@PathVariable String id) {
-        Optional<Run> run = runRepository.findById(id);
-
-        return run;
-    }
-
     @PostMapping("/runs")
     public ResponseEntity<Object> createRun(@Valid @RequestBody Run run, HttpServletRequest request) {
         run.setCreatedBy(applicationUserService.retrieveUserByUsername(request.getUserPrincipal().getName()));
         run.setCreated(new Date());
         run.setUpdatedBy(applicationUserService.retrieveUserByUsername(request.getUserPrincipal().getName()));
         run.setUpdated(new Date());
-
-        Run savedRun = runRepository.save(run);
-
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedRun.getId())
-                .toUri();
-
-        return ResponseEntity.created(location).build();
-    }
-
-    @PostMapping("/runs/{id}/scenarios")
-    public ResponseEntity<Object> createScenario(@Valid @RequestBody Run run) {
 
         Run savedRun = runRepository.save(run);
 
