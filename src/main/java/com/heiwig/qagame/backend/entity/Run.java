@@ -25,13 +25,9 @@ public class Run {
     public Run() {
     }
 
-    public Run(Date runDate, String description, ApplicationUser createdBy, Date created, ApplicationUser updatedBy, Date updated) {
+    public Run(Date runDate, String description) {
         this.runDate = runDate;
         this.description = description;
-        this.createdBy = createdBy;
-        this.created = created;
-        this.updatedBy = updatedBy;
-        this.updated = updated;
     }
 
     public String getId() {
