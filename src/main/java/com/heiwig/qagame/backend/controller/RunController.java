@@ -1,33 +1,21 @@
 package com.heiwig.qagame.backend.controller;
 
 import com.heiwig.qagame.backend.entity.Run;
-import com.heiwig.qagame.backend.entity.Scenario;
-import com.heiwig.qagame.backend.repository.ApplicationUserRepository;
 import com.heiwig.qagame.backend.repository.RunRepository;
 import com.heiwig.qagame.backend.service.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
-
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
 public class RunController {
-
-    @Autowired
-    private ApplicationUserRepository applicationUserRepository;
 
     @Autowired
     private ApplicationUserService applicationUserService;
@@ -48,5 +36,25 @@ public class RunController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @PatchMapping("/runs/{id}")
+    public ResponseEntity<Object> partialUpdateRun(@RequestBody Run run, @PathVariable String id, HttpServletRequest request) {
+        Optional<Run> oldRun= runRepository.findById(id);
+
+        if(!oldRun.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        oldRun.get().setUpdated(new Date());
+        oldRun.get().setUpdatedBy(applicationUserService.retrieveUserByUsername(request.getUserPrincipal().getName()));
+
+        if(run.getDescription() != null) oldRun.get().setDescription(run.getDescription());
+        if(run.getRunDate() != null) oldRun.get().setRunDate(run.getRunDate());
+
+        Run savedRun = runRepository.save(oldRun.get());
+
+        return ResponseEntity.ok(savedRun);
+
     }
 }
