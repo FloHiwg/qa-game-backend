@@ -4,6 +4,7 @@ import com.heiwig.qagame.backend.entity.Run;
 import com.heiwig.qagame.backend.repository.RunRepository;
 import com.heiwig.qagame.backend.service.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -15,6 +16,8 @@ import java.util.Date;
 import java.util.Optional;
 
 @RestController
+@RepositoryRestController
+@RequestMapping("runs")
 public class RunController {
 
     @Autowired
@@ -23,7 +26,7 @@ public class RunController {
     @Autowired
     private RunRepository runRepository;
 
-    @PostMapping("/runs")
+    @PostMapping
     public ResponseEntity<Object> createRun(@Valid @RequestBody Run run, HttpServletRequest request) {
         run.setCreatedBy(applicationUserService.retrieveUserByUsername(request.getUserPrincipal().getName()));
         run.setCreated(new Date());
@@ -38,7 +41,7 @@ public class RunController {
         return ResponseEntity.created(location).build();
     }
 
-    @PatchMapping("/runs/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Object> partialUpdateRun(@RequestBody Run run, @PathVariable String id, HttpServletRequest request) {
         Optional<Run> oldRun= runRepository.findById(id);
 
